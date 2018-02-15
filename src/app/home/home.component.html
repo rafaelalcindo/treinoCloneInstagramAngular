@@ -2,13 +2,16 @@
   <div class="container">
     <div class="logo"></div>
     <div>
-      <div class="add-post"></div>
+      <div class="add-post" (click)="abrirModal(content)" ></div>
       <a href="#" (click)="sair()" style="margin-left: 25px" >Sair</a>
-    </div>    
-  </div>  
+    </div>
+  </div>
 </nav>
 
 <br /><br /><br />
 <div class="container">
-  <app-publicacoes></app-publicacoes>   
+  <app-publicacoes></app-publicacoes>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <app-incluir-publicacao></app-incluir-publicacao>
+  </ng-template>
 </div>
