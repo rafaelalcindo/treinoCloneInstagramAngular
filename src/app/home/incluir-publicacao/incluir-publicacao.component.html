@@ -1,27 +1,60 @@
-<form [formGroup]="formulario" (ngSubmit)="publicar()" >
-  <div class="modal-header">
-    <h4 class="modal-title">Criar uma Publicacao</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <input 
-      type="file"
-      class="form-control"
-      accept="image/*"
-      (change)="preparaImagemUpload($event)"
-    >
+<div *ngIf="progressoPublicacao === 'pendente' " >
+  <form [formGroup]="formulario" (ngSubmit)="publicar()" >
+    <div class="modal-header">
+      <h4 class="modal-title">Criar uma Publicacao</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <input
+        type="file"
+        class="form-control"
+        accept="image/*"
+        (change)="preparaImagemUpload($event)"
+      >
 
-    <input
-      type="text"
-      placeholder="Título da publicação"
-      class="form-control"
-      formControlName="titulo"
-    >
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Fechar</button>
-    <button type="submit" class="btn btn--primary">Publicar</button>
-  </div>
-</form>
+      <input
+        type="text"
+        placeholder="Título da publicação"
+        class="form-control"
+        formControlName="titulo"
+      >
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Fechar</button>
+      <button type="submit" class="btn btn--primary">Publicar</button>
+    </div>
+  </form>
+</div>
+
+<div *ngIf="progressoPublicacao === 'andamento' " >
+  
+    <div class="modal-header">
+      <h4 class="modal-title">Publicação em Andamento</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Progresso {{ porcentagemUpload }}%
+    </div>        
+  
+</div>
+
+<div *ngIf="progressoPublicacao === 'concluido' " >
+  <form [formGroup]="formulario" (ngSubmit)="publicar()" >
+    <div class="modal-header">
+      <h4 class="modal-title">publicação concluido</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      Sua Publicação foi realizada com sucesso!
+    </div>
+    <div class="modal-footer">
+      
+    </div>
+  </form>
+</div>

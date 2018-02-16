@@ -10,6 +10,7 @@ import { Autenticacao } from './autenticacao.service';
 import { AutenticacaoGuard } from './autenticacao-guard.service'
 
 import { Bd } from './bd.service';
+import { Progresso } from './progresso.service'
 
 import { AppComponent } from './app.component';
 import { AcessoComponent } from './acesso/acesso.component';
@@ -41,7 +42,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule.forRoot(ROUTES),
     NgbModule.forRoot()
   ],
-  providers: [ Bd ,Autenticacao, AutenticacaoGuard ],
+  providers: [ Progresso , Bd ,Autenticacao, AutenticacaoGuard ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
