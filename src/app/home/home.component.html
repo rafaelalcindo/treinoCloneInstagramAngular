@@ -10,8 +10,8 @@
 
 <br /><br /><br />
 <div class="container">
-  <app-publicacoes></app-publicacoes>
+  <app-publicacoes #publicacoes ></app-publicacoes>
   <ng-template #content let-c="close" let-d="dismiss">
-    <app-incluir-publicacao></app-incluir-publicacao>
+    <app-incluir-publicacao (atualizarTimeLine)="atualizarTimeLine()" ></app-incluir-publicacao>
   </ng-template>
 </div>

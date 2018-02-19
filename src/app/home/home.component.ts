@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Autenticacao } from '../autenticacao.service';
 import * as $ from 'jquery/dist/jquery.min.js';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
 
   public closeResult: string;
 
+  @ViewChild('publicacoes') public publicacoes: any
+
   constructor(
     private autenticacao: Autenticacao,
     private modalService: NgbModal
@@ -23,6 +25,11 @@ export class HomeComponent implements OnInit {
 
   public sair(): void {
     this.autenticacao.sair()
+  }
+
+  public atualizarTimeLine():void {
+    console.log('chegamos até aqui')
+    this.publicacoes.atualizarTimeLine()
   }
 
 
